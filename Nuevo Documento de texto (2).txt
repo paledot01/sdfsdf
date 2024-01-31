@@ -1,0 +1,46 @@
+-> por defecto el contador de caracteres se muestra, pero puedes ocultarlo.
+-> 
+
+si hint existe debe mostrarse y no el contador
+si showCharacter es true debe mostrar contador
+showCharacterCount
+
+if(hint){
+	// elemento 2
+} 
+if(showCharacterCount){
+	// elemento 1		
+}
+
+===============
+1. activar y desactivar el contador de caracteres.
+2. aparecer y desaparecer el contador de caracteres.
+3. aparecer y desaparecer el hint.
+
+DUDAS:
+- id: en el TextINput en las variantes aveces le dan ID, pero no en todos.
+- variant: aunque hay componentes que no lo necesitan.
+- fill: porque insertan esta propiedad si supestamente no hace nada.
+
+
+- hint -> pasar a boolean
+
+
+-> si tienes que poner mas codigo para que sea solo un poco mas claro, haslo.
+-> si viendo todo el codigo de un componente, este parece confuso en una parte aunque funciona bien, 
+   entonces modularizalo en un Functional Component dentro del mismo componente y simplemente llamalo.
+-> al eliminar eso, piensa en las posibles consecuencias, ejm: si elimino un types no se podra usar nunca mas
+   talves sea simplemente colocarlo como opcional estonces puede volversea a poner solo si el usuario quiere 
+   si no NO se muestra nada.
+-> ten presente usar "interface": 
+	interface FooterProps {
+  		testId: string;
+  		id?: string;
+  		hint?: string;
+	}
+-> ten presente los "id" y "testid" para los que prueban el proyecto, estos nunca deben devolver "undefined"
+-> si no existe el token(variable) para un estilo entonces hardcodearlo y dejar un comentario:
+	padding: 0px;
+	// Correct margin-top not updated in vega-tokens yet
+	margin-top: 16px;
+-> 

@@ -1,0 +1,30 @@
+azure functions:
+
+Funcion: contiene 2 cosas:
+	1. el codigo con algun lenguaje de programacion
+	2. un archivo de config (function.json), lenguajes conpilado se 
+	   genera automaticamente, en lenguaje de scripting debe crearse 
+	   manualmente.
+
+Funcion App: 
+	es el entorno donde se ejecuta una funcion, y esta compuesto por 
+	una o mas funciones, cada una con su archivo json.
+	
+Triggers: es el que provoca que se ejecute nuestra funcion.
+Bindings: es la forma de conectar un recurso(de entrada o salida) a 
+		  nuestra funcion.
+		  
+Deploy:
+	1. click en todos los archivos / Deploy to Function App.
+	2. C-PE-NONPROD-01 / DasBotCentralApi
+	3. 
+		  
+the API needs to support importing lists dor SEIS PT xml file.
+The sample xml file is attached to this task.
+Read the "wells" and populate the db.
+
+Note:
+1. The job must be an existing job in the bd.(it should be created by running the CLI) if no such job exists, return error code 500 and response body {"status":"error_no_job_found"}.
+2. if a well list is created, return 200 with response body {"status": "created"}
+3. If the job already has a well list in db, replace it with the new data and return 200 with response body {"status":"updated"}
+

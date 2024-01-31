@@ -1,0 +1,180 @@
+Sprint: 10 Ene - 23 Ene
+1. 2051: TextArea: cuando se muestre un error al momento de estar escribiendo dentro del TextArea el lector de pantalla
+		debe leer automaticamente el mensaje de error(hint) que aparesca.
+		
+		observaciones: 
+		1. ¿? El contador de caracteres tambien deberia ser leido automaticamente cuando este aparesca.
+		2. En el textinput aunque no tenga ningun hint, el contenedor siempre esta en el DOM igual que en el TextArea
+
+
+		- characterlimit = ? -> aparece
+		- 
+2. 2054(TextArea): doble borde en error, azul y rojo
+
+3. feat(TextArea): add variant without counter
+
+
+aria-describedby={`text-area-test-footer`}
+
+
+export const Test: Story = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [error, setError] = useState(false);
+  const [hint, setHint] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInputValue(e.target.value);
+    if (e.target.value.length > 6) {
+      setError(false);
+      setHint('');
+    }
+    if (e.target.value.length > 4 && e.target.value.length <= 6) {
+      setError(false);
+      setHint('Accepted Accepted Accepted');
+    }
+    if (e.target.value.length > 2 && e.target.value.length <= 4) {
+      setError(true);
+      setHint('Errorr Errorr Errorr');
+    }
+  };
+
+  return (
+    <TextArea
+      variant="small"
+      value={inputValue}
+      error={error}
+      hint={hint}
+      onChange={handleInputChange}
+      label="label"
+      id="text-area-test"
+    />
+  );
+};
+
+export const WithoutCounter: Story<TextAreaProps> = Template.bind({});
+WithoutCounter.storyName = 'WithoutCounter';
+WithoutCounter.args = {
+  variant: 'small',
+  label: 'Label',
+  value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  id: 'without-counter-text-area',
+};
+? -> en el pie
+delete the number -> y el principal
+
+1. 1876: chore(Calendar/RangeCalendar): update crossed out line style
+2. 1688: feat(Calendar): add heading level
+3. 1981: chore(CustomDateRangePickerInput): update input style
+
+
+
+Read the "wells" and populate database.
+
+- The job must be an existing job in the database.(it should be created by running the CLI) if no such job exists, return error code 500 and response body {}.
+- if a well list id created return 200 with response body {}
+- if the job already has a well list in database, replace it with the new data and return 200 with response body {}
+
+-> tengo que registrar la lista de wells cada uno con el jobId que me proporcionan.
+
+{
+    "id": "0",
+    "dasbot_id": "dasbot_sim_000",
+    "wells": [
+        "test_well_000",
+        "test_well_001",
+        "test_well_002",
+        "test_well_003",
+        "test_well_004",
+        "test_well_005"
+    ],
+    "_rid": "Bqk8AJ+49+sBAAAAAAAAAA==",
+    "_self": "dbs/Bqk8AA==/colls/Bqk8AJ+49+s=/docs/Bqk8AJ+49+sBAAAAAAAAAA==/",
+    "_etag": "\"6500ecca-0000-0500-0000-65a831110000\"",
+    "_attachments": "attachments/",
+    "_ts": 1705521425
+}
+
+{
+    "id": "1",
+    "dasbot_id": "dasbot_sim_001",
+    "wells": [
+        "test_well_006",
+        "test_well_007",
+        "test_well_008",
+        "test_well_009",
+        "test_well_010"
+    ],
+    "_rid": "Bqk8AJ+49+sCAAAAAAAAAA==",
+    "_self": "dbs/Bqk8AA==/colls/Bqk8AJ+49+s=/docs/Bqk8AJ+49+sCAAAAAAAAAA==/",
+    "_etag": "\"6900f0ef-0000-0500-0000-65aa90980000\"",
+    "_attachments": "attachments/",
+    "_ts": 1705676952
+}
+
+{
+    "id": "2",
+    "dasbot_id": "dasbot_sim_002",
+    "wells": [
+        "test_well_011",
+        "test_well_012",
+        "test_well_013",
+        "test_well_014",
+        "test_well_015"
+    ],
+    "_rid": "Bqk8AJ+49+sDAAAAAAAAAA==",
+    "_self": "dbs/Bqk8AA==/colls/Bqk8AJ+49+s=/docs/Bqk8AJ+49+sDAAAAAAAAAA==/",
+    "_etag": "\"690001f0-0000-0500-0000-65aa90ab0000\"",
+    "_attachments": "attachments/",
+    "_ts": 1705676971
+}
+
+{
+    "id": "3",
+    "dasbot_id": "dasbot_sim_003",
+    "wells": [
+        "test_well_016",
+        "test_well_017",
+        "test_well_018",
+        "test_well_019",
+        "test_well_020"
+    ],
+    "_rid": "Bqk8AJ+49+sEAAAAAAAAAA==",
+    "_self": "dbs/Bqk8AA==/colls/Bqk8AJ+49+s=/docs/Bqk8AJ+49+sEAAAAAAAAAA==/",
+    "_etag": "\"690020f0-0000-0500-0000-65aa90bc0000\"",
+    "_attachments": "attachments/",
+    "_ts": 1705676988
+}
+
+{
+    "id": "4",
+    "dasbot_id": "dasbot_sim_004",
+    "wells": [
+        "test_well_021",
+        "test_well_022",
+        "test_well_023",
+        "test_well_024",
+        "test_well_025"
+    ],
+    "_rid": "Bqk8AJ+49+sFAAAAAAAAAA==",
+    "_self": "dbs/Bqk8AA==/colls/Bqk8AJ+49+s=/docs/Bqk8AJ+49+sFAAAAAAAAAA==/",
+    "_etag": "\"690097f0-0000-0500-0000-65aa90db0000\"",
+    "_attachments": "attachments/",
+    "_ts": 1705677019
+}
+
+{
+    "id": "5",
+    "dasbot_id": "dasbot_sim_005",
+    "wells": [
+        "test_well_026",
+        "test_well_027",
+        "test_well_028",
+        "test_well_029",
+        "test_well_030"
+    ],
+    "_rid": "Bqk8AJ+49+sGAAAAAAAAAA==",
+    "_self": "dbs/Bqk8AA==/colls/Bqk8AJ+49+s=/docs/Bqk8AJ+49+sGAAAAAAAAAA==/",
+    "_etag": "\"69009af0-0000-0500-0000-65aa90e50000\"",
+    "_attachments": "attachments/",
+    "_ts": 1705677029
+}

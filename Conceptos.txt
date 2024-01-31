@@ -1,0 +1,31 @@
+JWT:
+	https://blog.logrocket.com/jwt-authentication-best-practices/
+	https://nextjs.org/docs/app/building-your-application/rendering/server-components
+1. Cuando utiliza un JWT, debe comprobar su firma antes de guardarlo y utilizarlo.
+2. el token JWT consta de tres partes del codigo:
+	> Header: el tipo de algoritmo de firma que se esta usando y el tipo de token.
+	> Payload: objeto JSON.
+		- iss: el emisor del token
+		- iat: tiempo en segundos de emision del token en formato Unix Timestamp, desde el 1 enero de 1970(tiempo Unix). 
+		- exp: tiempo en segundos de expiracion del token en formato Unix Timestamp.
+		- obtener la fecha: new Date(1703262127 * 1000); // Multiplica por 1000 para convertir segundos a milisegundos
+	> Token: codigo para verificar el payload JSON.
+3. La identidad del usuario y los detalles de autorizacion se almacen y extraen del token.
+4. Hagas lo que hagas, no almacene un JWT en localStorage (o sessionStorage).
+4. Siempre debe almacenar los JWT dentro de una cookie HttpOnly(nunca es accesible, tanto de lectura como
+   de escritura).
+5. Sirve como medio para transmitir informacion de forma segura entre servicios con fines de autorizacion y autenticacion.
+
+CI/CD:
+	- CI : integracion continua. compilan, construye y prueba de manera automatica las nuevas versiones de codigo que van al main.
+	- CD : despliegue continuo. despues de la CI se sube los cambios automaticamente al repositorio y se desplega aproduccion al mismo tiempos.
+	
+CRON Jobs: 
+	- es una herramienta de programacion que te permite ejecutar una tarea en tu HOSTIN de manera automatica a una hora y 
+	  fecha determinada.
+	- Por ejemplo si tienes una tienda online y esta se sicroniza con una tienda fisica y no quieras realizar esta sincronizacion 
+	  manualmente, la opcion es crear un CRON.
+	  
+TTFB
+	- es el tiempo total empleado por el servidor remoto para enviar el primer byte de datos despues de que un usuario solicita 
+	los datoa o la pagina web.

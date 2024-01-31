@@ -1,0 +1,47 @@
+#### NestJS
+
+Providers: son clases inyectables como: services, controllers, etc
+
+npm i -g @nestjs/cli --> instalacion de Nest
+nest -v --> para ver la version
+
+nest new project-name --> creacion de un proyecto en Nest.
+nest g s carpeta-name --> crea un servicio dentro de la carpeta.
+
+
+==== Pagination 
+	Con Query: es una menera extensa pero mas personalizada de acceder a su base de datos, atraves de consultas a la BD.
+		https://pietrzakadrian.com/blog/how-to-create-pagination-in-nestjs-with-typeorm-swagger
+
+	Con Active Record(AR): es una forma sencilla de acceder a su base de datos dentro de sus modelos
+		https://orkhan.gitbook.io/typeorm/docs/active-record-data-mapper
+		https://typeorm.io/active-record-data-mapper
+
+==== Autorization JWT
+
+	0. insertas un usuario en la BD:
+	
+		INSERT INTO contamype.user(email,user_password,phone) VALUES ('usertesting@gmail.com', 			'$2b$10	$0YDtltV/e/dre8JoNBBff.0mGDsFxc/GRPqOBGyyUCvfhgRPV9SVi', 99999991);
+	
+	1. http://localhost:3000/api
+	2. /login  - te logeas y te devuelve un token con este
+	
+	{
+    		"email": "usertesting@gmail.com",
+    		"password": "Cloe12345678"
+	}
+	
+	3. Arriba derecha, "Authorize" pegas el token y guardas.
+	
+==== Problema de Cors: para poder abrir el back y front en la misma pc.
+	1. main.ts / dentro del metodo "bootstrap()" / agregar enableCors():
+		const app = await NestFactory.create(AppModule);
+  		app.enableCors(); // ---> esto se agrega
+	
+	
+	
+==== Middleware:
+	- se coloca en root de la aplicacion: middleware.ts
+	- 
+
+- action

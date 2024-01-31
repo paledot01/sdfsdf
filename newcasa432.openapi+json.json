@@ -1,0 +1,57 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "newcasa432",
+        "description": "Import from \"casa432\" Function App",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://casa432-kevin.azure-api.net/newcasa432"
+        }
+    ],
+    "paths": {
+        "/httpTrigger2": {
+            "get": {
+                "summary": "httpTrigger2",
+                "operationId": "get-httptrigger2",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            },
+            "post": {
+                "summary": "httpTrigger2",
+                "operationId": "post-httptrigger2",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "Ocp-Apim-Subscription-Key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "subscription-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}

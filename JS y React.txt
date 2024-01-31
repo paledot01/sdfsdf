@@ -1,0 +1,10 @@
+PROMESA:
+https://www.freecodecamp.org/news/javascript-promises-async-await-and-promise-methods/
+REACT QUERY:
+https://refine.dev/blog/react-query-guide/#what-is-react-query
+
+
+HOC (higher order components): https://www.freecodecamp.org/news/higher-order-components-in-react/
+-> toma un componente como argumento y devuelve un nuevo componente que envuelve el componente original.
+-> puede utilizar un HOC para agregar capacidades de autenticación o enrutamiento a un componente o para 
+   aplicar un estilo o comportamiento específico a varios componentes.

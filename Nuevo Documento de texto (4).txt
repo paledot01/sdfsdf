@@ -1,0 +1,8 @@
+aria-live: polite (atento)-> detecta un cambio dentro del elemento dondo se coloca, si esto pasa se vuelve a leer.
+aria-atomic: hace que el aria-live solo lea los cambios(false) o lea todo el componente nuevamente(true).
+
+endpoint con documentacion.
+
+funcion app
+endpoint con versionamiento Swagger
+action function

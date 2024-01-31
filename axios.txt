@@ -1,0 +1,120 @@
+crudProps.ts
+
+export interface CrudProps<T, U>  {
+    get: (url: string) => Observable<Array<T>>;
+    delete: (url: string, id: number) => void
+    add: (url: string, item: U) => void;
+    // update: (url: string, item: T) => void;
+    change: Observable<boolean> | undefined;
+}
+
+recurrentInvoices.ts
+export interface recurrentInvoices {
+  id: number;
+  trxType: string;
+  detraction: string;
+  export: boolean;
+  typeDocu: string;
+  ruc: string;
+  socialName: string;
+  anticipatedPayment: boolean;
+  itinerant: boolean;
+  establishment: boolean;
+  consigAddress: boolean;
+  fuelVehicle: boolean;
+  currency: string;
+  anticipatedDisc: string;
+  isc: string;
+  freeOps: boolean;
+  otherTaxes: boolean;
+  observations: string;
+  active: boolean;
+}
+
+
+
+recurrentInvoicesDTO.ts
+
+export interface recurrentInvoicesDTO {
+  trxType: string;
+  detraction: string;
+  export: boolean;
+  typeDocu: string;
+  socialName: string;
+  currency: string;
+  programmedDate: string;
+  frequency: string;
+}
+
+
+RecurrentInvoices.tsx
+
+
+import { CrudProps } from '@/models/crudProps';
+import { recurrentInvoices } from '@/models/recurrentInvoices';
+import { recurrentInvoicesDTO } from '@/models/recurrentInvoicesDTO';
+import React, { useEffect, useState } from 'react';
+
+const RecurrentInvoices = (props: CrudProps<recurrentInvoices, recurrentInvoicesDTO>) => {
+  // ----------------------->>>>
+  const [listRecurrentInvoices, setListRecurrentInvoices] = useState<recurrentInvoices[]>([]); // esta tipando el tipo de arreglo que sera el valor.
+  const exampleInvoiceDTO: recurrentInvoicesDTO = {
+    trxType: '1',
+    detraction: 'N',
+    export: true,
+    typeDocu: '-',
+    socialName: 'Basilio',
+    currency: 'USD',
+    programmedDate: '4/11/2024',
+    frequency: 'MONTHLY',
+  };
+  useEffect(() => {
+    const getRecurrentInvoices = () =>
+      props.get('recurrent-invoices').subscribe((response) => {
+        // direccion del endpoint
+        setListRecurrentInvoices(response);
+      });
+
+    getRecurrentInvoices();
+
+    const changeSubscription = props.change?.subscribe((change) => {
+      // -> se suscribe al subject que permite detectar el cambio, si es asi ejecuta el metodo get nuevmanete para actualizar los datos.
+      if (change) {
+        // al final cuando deja de renderizar el componente se desuscribe al observable que detecta el cambio.
+        getRecurrentInvoices();
+      }
+    });
+
+    return () => {
+      // se ejecuta cuando el componente deja de renderizarse.
+      changeSubscription?.unsubscribe();
+      console.log('desmonte');
+    };
+  }, []);
+
+  return (
+    <>
+      <input
+        type="button"
+        value="+"
+        onClick={() => {
+          props.add('recurrent-invoices', exampleInvoiceDTO);
+        }}
+      />
+      {listRecurrentInvoices.filter((r) => r.active === true).map((r) => (
+        <div key={r.id}>
+          {r.id + ' - ' + r.socialName}
+          <input
+            type="button"
+            value=" - "
+            onClick={() => {
+              props.delete('recurrent-invoices', r.id as number);
+            }}
+          />
+        </div>
+      ))}
+    </>
+  );
+};
+
+export default RecurrentInvoices;
